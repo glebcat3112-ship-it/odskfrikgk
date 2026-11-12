@@ -1,0 +1,10 @@
+Сборка TargetHUD в .jar
+
+Вариант 1 (с телефона, без ПК) — GitHub Actions:
+1. Создай репозиторий на github.com и загрузи ВСЕ файлы из этой папки (вместе с папкой .github).
+2. Вкладка Actions -> дождись зелёной галочки у workflow "build" (2-4 минуты).
+3. Открой запуск -> внизу Artifacts -> скачай targethud-jar (внутри targethud-1.0.0.jar).
+4. Положи jar в папку mods вместе с Fabric API 0.118.0+1.21.4.
+
+Вариант 2 (ПК с Java 21 и Gradle 8.12+): в папке проекта выполни  gradle build
+Готовый файл: build/libs/targethud-1.0.0.jar

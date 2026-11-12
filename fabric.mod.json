@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "targethud",
+  "version": "${version}",
+  "name": "TargetHUD",
+  "description": "Таргет худ: голова, ник, HP и полоска здоровья. Размер, цвет и позиция настраиваются.",
+  "authors": [],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.targethud.TargetHudMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
