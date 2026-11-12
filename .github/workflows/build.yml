@@ -1,0 +1,32 @@
+name: build
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Разложить файлы по папкам
+        run: |
+          J=src/main/java/dev/targethud
+          R=src/main/resources
+          L=$R/assets/targethud/lang
+          mkdir -p $J $L
+          for f in TargetHud*.java TargetTracker.java; do [ -f "$f" ] && mv "$f" $J/; done
+          [ -f fabric.mod.json ] && mv fabric.mod.json $R/
+          [ -f en_us.json ] && mv en_us.json $L/
+          [ -f ru_ru.json ] && mv ru_ru.json $L/
+          find . -name "*.java" -not -path "./.git/*"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.12'
+      - run: gradle build --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: targethud-jar
+          path: build/libs/targethud-1.0.0.jar
